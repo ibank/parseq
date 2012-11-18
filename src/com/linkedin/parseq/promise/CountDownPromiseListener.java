@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Sets a value on a {@link SettablePromise} after this listener has been
  * notified of a specified number of promise resolutions.
  *
- * @author Chris Pettitt
+ * @author Chris Pettitt (cpettitt@linkedin.com)
  */
 public class CountDownPromiseListener<T> implements PromiseListener<T>
 {
@@ -38,7 +38,7 @@ public class CountDownPromiseListener<T> implements PromiseListener<T>
   }
 
   @Override
-  public void onResolved(Promise resolvedPromise)
+  public void onResolved(Promise<T> resolvedPromise)
   {
     if (_counter.decrementAndGet() == 0)
     {

@@ -19,7 +19,7 @@ package com.linkedin.parseq.promise;
 /**
  * Propagates the result from one promise to another.
  *
- * @author Chris Pettitt
+ * @author Chris Pettitt (cpettitt@linkedin.com)
  */
 /* package private */ class PropagateResultListener<T, S extends T> implements PromiseListener<S>
 {
@@ -33,7 +33,7 @@ package com.linkedin.parseq.promise;
   }
 
   @Override
-  public void onResolved(Promise resolvedPromise)
+  public void onResolved(Promise<S> resolvedPromise)
   {
     if (_source.isFailed())
     {

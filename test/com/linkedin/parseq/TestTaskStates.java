@@ -315,7 +315,7 @@ public class TestTaskStates
     task.contextRun(new NullContext(), new NullTaskLog(), NO_PARENT, NO_PREDECESSORS);
   }
 
-  private void assertInitOrScheduled(final Task task)
+  private void assertInitOrScheduled(final Task<?> task)
   {
     assertFalse(task.isDone());
     assertFalse(task.isFailed());
@@ -343,7 +343,7 @@ public class TestTaskStates
     }
   }
 
-  private void assertRunOrPending(final Task task)
+  private void assertRunOrPending(final Task<?> task)
   {
     assertFalse(task.isDone());
     assertFalse(task.isFailed());
@@ -381,7 +381,7 @@ public class TestTaskStates
     assertTrue(task.getShallowTrace().getStartNanos() <= task.getShallowTrace().getEndNanos());
   }
 
-  private void assertFailed(final Task task, Exception exception)
+  private void assertFailed(final Task<?> task, Exception exception)
   {
 
     assertTrue(task.isDone());
@@ -419,6 +419,12 @@ public class TestTaskStates
 
     @Override
     public After after(final Promise<?>... promises)
+    {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Object getEngineProperty(String key)
     {
       throw new UnsupportedOperationException();
     }
